@@ -90,6 +90,44 @@ Subdirectories mirror the original relative paths of each file.
 - Adjust the Java detection regex in `main.rs`.
 - Tweak quality thresholds or keywords as needed.
 
+## GitHub Repository Setup
+
+To clone and push to this repository using SSH authentication:
+
+1. **Generate an SSH key** (if you don't have one):
+   ```bash
+   ssh-keygen -t ed25519 -C "your_email@example.com"
+   ```
+   - Press Enter to accept the default file location
+   - Optionally set a passphrase for added security
+
+2. **Add your SSH key to the SSH agent**:
+   ```bash
+   eval "$(ssh-agent -s)"
+   ssh-add ~/.ssh/id_ed25519
+   ```
+
+3. **Add the public key to GitHub**:
+   - Copy your public key:
+     ```bash
+     cat ~/.ssh/id_ed25519.pub
+     ```
+   - Go to [GitHub SSH Keys](https://github.com/settings/keys)
+   - Click "New SSH key"
+   - Paste your public key and save
+
+4. **Clone the repository**:
+   ```bash
+   git clone git@github.com:HectorCorbellini/JobsOrganizer.git
+   ```
+
+5. **Push changes**:
+   ```bash
+   git add .
+   git commit -m "Your commit message"
+   git push origin main
+   ```
+
 ## License
 
 MIT © Your Name
