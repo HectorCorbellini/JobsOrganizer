@@ -1,10 +1,10 @@
 # Multi-stage Dockerfile for Organizer
 
 # Build stage
-FROM rust:1.70 as builder
+FROM rust:1.82-slim as builder
+
 WORKDIR /usr/src/organizer
 COPY . .
-RUN rm -f Cargo.lock
 RUN cargo build --release
 
 # Runtime stage
