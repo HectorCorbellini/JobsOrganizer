@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# clean.sh - Remove build artifacts and caches to reduce project size without harming code.
+
+set -euo pipefail
+
+echo "Cleaning Cargo build artifacts..."
+cargo clean
+
+# Remove the entire target directory in case of leftover files
+echo "Removing 'target/' directory..."
+rm -rf target/
+
+# Remove OS metadata files
+echo "Removing .DS_Store files..."
+find . -name ".DS_Store" -type f -delete
+
+# Remove common backup and swap files
+echo "Removing backup and swap files..."
+find . -type f \( -name "*~" -o -name "*.sw?" -o -name "#*#" -o -name "*.bak" \) -delete
+
+# Clean all Git-ignored files (build caches, temp files)
+echo "Running 'git clean' on ignored files..."
+git clean -fdX
+
+echo "Project cleanup complete."
